@@ -7,7 +7,7 @@ import scalalib._
 // support BSP
 import mill.bsp._
 
-object ca-lab extends SbtModule { m =>
+object CALab extends SbtModule { m =>
   override def millSourcePath = os.pwd
   override def scalaVersion = "2.12.13"
   override def scalacOptions = Seq(
