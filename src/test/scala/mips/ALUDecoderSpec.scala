@@ -2,12 +2,14 @@ package mips
 
 import chisel3._
 import chisel3.tester._
+import chiseltest.internal.WriteVcdAnnotation
+import chiseltest.experimental.TestOptionBuilder._
 import org.scalatest.FreeSpec
 import chisel3.experimental.BundleLiterals._
 
 class ALUDecoderSpec extends FreeSpec with ChiselScalatestTester {
   "ALU decoder should work properly" in {
-    test(new ALUDecoder()) { c =>
+    test(new ALUDecoder()).withAnnotations(Seq(WriteVcdAnnotation)) { c =>
       val cases = Map(
         ("b00".U, 0.U) -> "b010".U,
         ("b00".U, 1.U) -> "b010".U,
