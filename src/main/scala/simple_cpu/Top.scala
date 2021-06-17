@@ -7,10 +7,7 @@ import chisel3.stage.{ChiselGeneratorAnnotation, ChiselStage}
 
 
 class CpuTop extends Module {
-  val io = IO {
-    new Bundle {
-    }
- }
+  val io = IO { new Bundle() }
 
   val clkCount = Module { new clk_count() }
 
@@ -80,7 +77,7 @@ class CpuTop extends Module {
 
   // alu
   alu.io.SrcAE := d2e.io.RD1E
-  alu.io.DstAE := Mux(d2e.io.ALUSrcE, d2e.io.SignImm32E, d2e.io.RD2E)
+  alu.io.SrcBE := Mux(d2e.io.ALUSrcE, d2e.io.SignImm32E, d2e.io.RD2E)
   alu.io.ALUControlE := d2e.io.ALUControlE
 
   // decode to execute
