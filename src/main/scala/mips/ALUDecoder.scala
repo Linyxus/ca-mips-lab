@@ -12,6 +12,8 @@ class ALUDecoder extends Module {
     }
   }
 
+  io.aluCtl := 0.U
+
   when (io.aluOp === "b00".U) {
     io.aluCtl := "b010".U
   }

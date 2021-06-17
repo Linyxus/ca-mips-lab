@@ -17,6 +17,14 @@ class MainDecoder extends Module {
     }
   }
 
+  io.regWrite := false.B
+  io.regDst := false.B
+  io.aluSrc := false.B
+  io.branch := false.B
+  io.memWrite := false.B
+  io.memToReg := false.B
+  io.aluOp := 0.U
+
   switch (io.opcode) {
     // R-type inst
     is("b000000".U) {
@@ -41,7 +49,7 @@ class MainDecoder extends Module {
     }
 
     // sw
-    is("b100011".U) {
+    is("b101011".U) {
       io.regWrite := false.B
       io.aluSrc := true.B
       io.branch := false.B
